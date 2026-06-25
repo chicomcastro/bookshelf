@@ -1,41 +1,84 @@
+<div align="center">
+
 # 📚 Bookshelf
 
-> Estante virtual e livro de anotações para leitoras. Uma SPA local-first, instalável como app, com estética _dark academia_.
+### Seu diário de leitura — bonito o suficiente pra postar.
 
-**Status:** 🌱 Concepção — documentação de diretriz e backlog (entregável 1).
+_Uma estante virtual e um diário íntimo para quem vive de livros._
 
-Bookshelf é um web app (SPA) onde leitoras organizam sua estante virtual (lidos,
-lendo, quero ler), registram anotações e resenhas por livro, e acompanham sua
-jornada de leitura — tudo offline-first, sem login, hospedado no GitHub Pages.
+</div>
 
-## Documentação
+---
 
-| Documento | Conteúdo |
-|-----------|----------|
-| [`docs/01-visao-e-diretrizes.md`](docs/01-visao-e-diretrizes.md) | Visão de produto, público-alvo, princípios, posicionamento, métricas |
-| [`docs/02-design-system.md`](docs/02-design-system.md) | Identidade visual, cores, tipografia, componentes, telas |
-| [`docs/03-arquitetura.md`](docs/03-arquitetura.md) | Stack técnica, decisões (ADRs), modelo de dados, deploy |
-| [`docs/04-backlog.md`](docs/04-backlog.md) | Épicos, histórias de usuário, priorização MoSCoW, roadmap |
-| [`docs/adr/`](docs/adr/) | Decision Records — decisões de arquitetura e produto |
+Você terminou o livro às 3 da manhã, com o coração na mão. Onde você guarda
+**isso**? O book hangover, a citação que te destruiu, o book boyfriend que arruinou
+seus padrões, o nível de picância 🌶️🌶️🌶️🌶️ que você jura que valeu cada página?
 
-## Pitch
+O Goodreads não entende você. A planilha é fria. O caderninho some.
 
-> Um **diário de leitura íntimo** para a cultura BookTok, onde cada livro vira uma
-> página linda o suficiente pra postar.
+**O Bookshelf é o seu lugar.** Sua estante, suas resenhas, seus sentimentos — num
+app lindo, privado e que cabe no bolso.
 
-## Decisões fundadoras (ver [ADRs](docs/adr/))
+## ✨ O que você pode fazer
 
-- **Diário-first** — a entrada de diário é o coração; a estante é a vitrine.
-- **Nicho BookTok** — spice 🌶️, tropes, book boyfriends e mood já no MVP.
-- **Compartilhável** — cada resenha gera um card _story-ready_ (motor de crescimento).
-- **Viral por fora, privado por dentro** — sem rede social no app; a comunidade
-  cresce nas redes que a usuária já usa.
-- **Local-first** — dados no dispositivo (IndexedDB), backup por export/import JSON.
-- **Open Library API** — metadados e capas, gratuita e sem chave.
-- **Bilíngue** — i18n desde o início (PT-BR + EN).
-- **SPA + PWA** — instalável, near-native, hospedável no GitHub Pages.
+- 📖 **Montar sua estante** — lidos, lendo e a próxima obsessão (TBR), tudo numa
+  grade que dá orgulho de mostrar.
+- 💭 **Escrever seu diário de leitura** — resenhas, anotações e aquelas citações que
+  você sublinhou. Com aviso de **spoiler** pra não estragar a surpresa de ninguém.
+- 🌶️ **Falar a sua língua** — avalie o **spice**, marque **tropes** (enemies to
+  lovers, slow burn, found family…), registre seu **mood** e seus
+  **book boyfriends**.
+- 🪄 **Compartilhar em segundos** — transforme qualquer leitura num **card lindo**,
+  pronto pro seu story. Cada print é um convite pra mais uma leitora.
+- 🔒 **Sem login, sem servidor, 100% seu** — seus dados ficam só no seu aparelho.
+  Funciona **offline** e **instala como app** na tela inicial.
+- 🌍 **Em português e inglês.**
 
-## Público-alvo
+## 🚀 Começar
 
-Leitoras jovens (20–35 anos), cultura BookTok/romantasy, que querem um espaço
-bonito e pessoal para registrar o que sentiram e curar sua biblioteca.
+> 🌐 **App online:** `https://chicomcastro.github.io/bookshelf/`
+> _(publicado automaticamente a cada atualização)_
+
+Abriu, usou. Sem cadastro. Toque em **＋**, busque um livro, e comece a sua estante.
+Quer experimentar antes? Toque em _"Ver estante de exemplo"_.
+
+## 💛 Para quem é
+
+Para leitoras que transformam livros em personalidade. Cultura BookTok, romantasy,
+dark romance, fantasia — se você monta TBR e tira foto da estante, isso é pra você.
+
+---
+
+<details>
+<summary><b>🛠️ Sob o capô</b> (para quem curte os detalhes técnicos)</summary>
+
+<br>
+
+App web (SPA) **local-first**, instalável como PWA, hospedado no GitHub Pages.
+React + Vite + TypeScript, Tailwind, IndexedDB (Dexie), Open Library para capas,
+i18n PT/EN. Sem backend: privacidade por padrão e custo zero.
+
+A direção do produto, o design system, a arquitetura e as decisões (ADRs) ficam em
+[`docs/`](docs/):
+
+| | |
+|---|---|
+| 🧭 [Visão e diretrizes](docs/01-visao-e-diretrizes.md) | Propósito, público, princípios, métricas |
+| 🎨 [Design system](docs/02-design-system.md) | Identidade, tokens, componentes, telas |
+| 🏗️ [Arquitetura](docs/03-arquitetura.md) | Stack, modelo de dados, deploy |
+| 🗂️ [Backlog](docs/04-backlog.md) | Épicos, histórias, roadmap |
+| 📜 [Decision Records](docs/adr/) | Decisões de arquitetura e produto |
+
+**Rodar localmente:**
+
+```bash
+npm install
+npm run dev      # ambiente de desenvolvimento
+npm run build    # build de produção
+```
+
+</details>
+
+<div align="center">
+<sub>Feito com 💛 para quem nunca tem só "mais um capítulo".</sub>
+</div>
