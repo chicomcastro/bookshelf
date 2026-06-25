@@ -1,0 +1,104 @@
+{
+  "app": { "name": "Bookshelf", "tagline": "your reading diary" },
+  "nav": { "shelf": "Shelf", "search": "Search", "settings": "Settings" },
+  "greeting": {
+    "morning": "Good morning, reader",
+    "afternoon": "Good afternoon, reader",
+    "evening": "Good evening, reader"
+  },
+  "shelf": {
+    "title": "My shelf",
+    "all": "All",
+    "favorites": "Favorites",
+    "count_one": "{{count}} book",
+    "count_other": "{{count}} books",
+    "sort": { "recent": "Recent", "title": "Title", "rating": "Rating" },
+    "empty": {
+      "title": "Your shelf is waiting for its first tome",
+      "subtitle": "Which story begins today?",
+      "cta": "Find a book",
+      "sample": "See a sample shelf"
+    }
+  },
+  "status": {
+    "want_to_read": "Want to read",
+    "reading": "Reading",
+    "read": "Read",
+    "shelve": "Add to shelf"
+  },
+  "search": {
+    "title": "Search books",
+    "placeholder": "Title, author...",
+    "hint": "Search by title or author to add to your shelf.",
+    "empty": "No results. Try another term.",
+    "error": "We couldn't search right now. Are you offline?",
+    "added": "Added to your shelf ✨",
+    "already": "This book is already on your shelf"
+  },
+  "book": {
+    "byline": "by {{authors}}",
+    "rating": "Your rating",
+    "spice": "Spice level",
+    "tropes": "Tropes",
+    "moods": "How it made you feel",
+    "characters": "Characters & book boyfriends",
+    "addCharacter": "Add character",
+    "characterName": "Name",
+    "characterRole": "Role (e.g. love interest)",
+    "bookBoyfriend": "Book boyfriend 💛",
+    "review": "Your review",
+    "reviewPlaceholder": "How did this book make you feel?",
+    "notes": "Notes & quotes",
+    "addNote": "New note",
+    "addQuote": "New quote",
+    "notePlaceholder": "A thought, a reaction...",
+    "quotePlaceholder": "That line you underlined...",
+    "spoiler": "Spoiler",
+    "spoilerHidden": "Tap to reveal (spoiler)",
+    "started": "Started",
+    "finished": "Finished",
+    "share": "Share review",
+    "remove": "Remove from shelf",
+    "removeConfirm": "Remove this book and its notes?",
+    "saved": "Saved"
+  },
+  "share": {
+    "title": "Review card",
+    "subtitle": "Ready for your story",
+    "download": "Download image",
+    "shareBtn": "Share",
+    "template": "Theme",
+    "generating": "Generating...",
+    "watermark": "made with Bookshelf"
+  },
+  "settings": {
+    "title": "Settings",
+    "language": "Language",
+    "theme": "Theme",
+    "themeDark": "Dark",
+    "themeLight": "Light",
+    "themeSystem": "System",
+    "data": "Your data",
+    "export": "Export backup",
+    "import": "Import backup",
+    "importMerge": "Merge",
+    "importReplace": "Replace all",
+    "wipe": "Wipe all",
+    "wipeConfirm": "Delete ALL your data? This can't be undone.",
+    "exported": "Backup downloaded 💾",
+    "imported": "Backup imported ✨",
+    "about": "About",
+    "aboutText": "Bookshelf is your local-first reading diary: your data stays only on your device, never on servers. Make backups so you never lose a thing.",
+    "privacy": "100% private · works offline · no login",
+    "loadSample": "Load a sample shelf"
+  },
+  "common": {
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "save": "Save",
+    "delete": "Delete",
+    "back": "Back",
+    "close": "Close",
+    "add": "Add"
+  }
+}

@@ -1,0 +1,104 @@
+{
+  "app": { "name": "Bookshelf", "tagline": "seu diário de leitura" },
+  "nav": { "shelf": "Estante", "search": "Buscar", "settings": "Ajustes" },
+  "greeting": {
+    "morning": "Bom dia, leitora",
+    "afternoon": "Boa tarde, leitora",
+    "evening": "Boa noite, leitora"
+  },
+  "shelf": {
+    "title": "Minha estante",
+    "all": "Tudo",
+    "favorites": "Favoritos",
+    "count_one": "{{count}} livro",
+    "count_other": "{{count}} livros",
+    "sort": { "recent": "Recentes", "title": "Título", "rating": "Avaliação" },
+    "empty": {
+      "title": "Sua estante está esperando o primeiro tomo",
+      "subtitle": "Que história começa hoje?",
+      "cta": "Buscar um livro",
+      "sample": "Ver estante de exemplo"
+    }
+  },
+  "status": {
+    "want_to_read": "Quero ler",
+    "reading": "Lendo",
+    "read": "Lido",
+    "shelve": "Adicionar à estante"
+  },
+  "search": {
+    "title": "Buscar livros",
+    "placeholder": "Título, autora...",
+    "hint": "Busque por título ou autora para adicionar à sua estante.",
+    "empty": "Nenhum resultado. Tente outro termo.",
+    "error": "Não conseguimos buscar agora. Você está offline?",
+    "added": "Adicionado à estante ✨",
+    "already": "Esse livro já está na estante"
+  },
+  "book": {
+    "byline": "por {{authors}}",
+    "rating": "Sua nota",
+    "spice": "Nível de picância",
+    "tropes": "Tropes",
+    "moods": "Como te fez sentir",
+    "characters": "Personagens & book boyfriends",
+    "addCharacter": "Adicionar personagem",
+    "characterName": "Nome",
+    "characterRole": "Papel (ex.: love interest)",
+    "bookBoyfriend": "Book boyfriend 💛",
+    "review": "Sua resenha",
+    "reviewPlaceholder": "O que esse livro te fez sentir?",
+    "notes": "Anotações & citações",
+    "addNote": "Nova anotação",
+    "addQuote": "Nova citação",
+    "notePlaceholder": "Uma ideia, uma reação...",
+    "quotePlaceholder": "Aquela frase que você sublinhou...",
+    "spoiler": "Spoiler",
+    "spoilerHidden": "Toque para revelar (spoiler)",
+    "started": "Começado",
+    "finished": "Terminado",
+    "share": "Compartilhar resenha",
+    "remove": "Remover da estante",
+    "removeConfirm": "Remover este livro e suas anotações?",
+    "saved": "Salvo"
+  },
+  "share": {
+    "title": "Card de resenha",
+    "subtitle": "Pronto pro seu story",
+    "download": "Baixar imagem",
+    "shareBtn": "Compartilhar",
+    "template": "Tema",
+    "generating": "Gerando...",
+    "watermark": "feito no Bookshelf"
+  },
+  "settings": {
+    "title": "Ajustes",
+    "language": "Idioma",
+    "theme": "Tema",
+    "themeDark": "Escuro",
+    "themeLight": "Claro",
+    "themeSystem": "Sistema",
+    "data": "Seus dados",
+    "export": "Exportar backup",
+    "import": "Importar backup",
+    "importMerge": "Mesclar",
+    "importReplace": "Substituir tudo",
+    "wipe": "Apagar tudo",
+    "wipeConfirm": "Apagar TODOS os seus dados? Isso não pode ser desfeito.",
+    "exported": "Backup baixado 💾",
+    "imported": "Backup importado ✨",
+    "about": "Sobre",
+    "aboutText": "Bookshelf é seu diário de leitura local-first: seus dados ficam só no seu aparelho, nunca em servidores. Faça backups para não perder nada.",
+    "privacy": "100% privado · funciona offline · sem login",
+    "loadSample": "Carregar estante de exemplo"
+  },
+  "common": {
+    "cancel": "Cancelar",
+    "confirm": "Confirmar",
+    "save": "Salvar",
+    "delete": "Excluir",
+    "back": "Voltar",
+    "close": "Fechar",
+    "add": "Adicionar"
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "name": "bookshelf",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "homepage": "https://chicomcastro.github.io/bookshelf/",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview",
+    "lint": "eslint . --max-warnings 0",
+    "typecheck": "tsc -b --noEmit"
+  },
+  "dependencies": {
+    "dexie": "^4.0.8",
+    "dexie-react-hooks": "^1.1.7",
+    "framer-motion": "^11.3.8",
+    "html-to-image": "^1.11.11",
+    "i18next": "^23.12.2",
+    "i18next-browser-languagedetector": "^8.0.0",
+    "lucide-react": "^0.417.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-i18next": "^15.0.0",
+    "react-router-dom": "^6.26.0",
+    "zustand": "^4.5.4"
+  },
+  "devDependencies": {
+    "@fontsource-variable/fraunces": "^5.0.21",
+    "@fontsource-variable/inter": "^5.0.20",
+    "@types/node": "^20.14.0",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@typescript-eslint/eslint-plugin": "^7.18.0",
+    "@typescript-eslint/parser": "^7.18.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "autoprefixer": "^10.4.19",
+    "eslint": "^8.57.0",
+    "eslint-plugin-react-hooks": "^4.6.2",
+    "eslint-plugin-react-refresh": "^0.4.9",
+    "postcss": "^8.4.40",
+    "tailwindcss": "^3.4.7",
+    "typescript": "^5.5.4",
+    "vite": "^5.3.5",
+    "vite-plugin-pwa": "^0.20.1"
+  }
+}

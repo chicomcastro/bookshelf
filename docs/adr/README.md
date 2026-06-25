@@ -19,6 +19,9 @@ Consequências. **Status:** `Proposto` · `Aceito` · `Substituído por ADR-XXXX
 | [0008](0008-crescimento-viral-externo.md) | Crescimento viral externo, sem rede social no app | Aceito |
 | [0009](0009-compartilhar-card-resenha.md) | Compartilhamento via card de resenha (imagem) no MVP | Aceito |
 | [0010](0010-formato-diario-hibrido.md) | Formato de diário híbrido (prompts + texto livre) | Aceito |
+| [0011](0011-ci-cd-github-actions.md) | CI por PR + CD para GitHub Pages via Actions | Aceito |
+| [0012](0012-bibliotecas-de-experiencia.md) | Bibliotecas de experiência (motion, ícones, fontes) | Aceito |
+| [0013](0013-card-via-html-to-image.md) | Geração do card de resenha via html-to-image | Aceito |
 
 ## Como criar um novo ADR
 
