@@ -49,7 +49,15 @@
     "empty": "Nenhum resultado. Tente outro termo.",
     "error": "Não conseguimos buscar agora. Você está offline?",
     "added": "Adicionado à estante ✨",
-    "already": "Esse livro já está na estante"
+    "already": "Esse livro já está na estante",
+    "manualCta": "Não encontrou? Adicionar manualmente"
+  },
+  "manual": {
+    "title": "Adicionar manualmente",
+    "titleField": "Título *",
+    "authorField": "Autora (separe por vírgula)",
+    "yearField": "Ano",
+    "coverField": "URL da capa (opcional)"
   },
   "book": {
     "byline": "por {{authors}}",

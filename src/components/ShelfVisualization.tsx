@@ -39,7 +39,7 @@ export function ShelfVisualization({ books }: { books: Book[] }) {
                 >
                   <Link
                     to={`/book/${book.id}`}
-                    className="flex items-center justify-center rounded-t-sm shadow-soft transition-transform active:scale-95"
+                    className="flex items-center justify-center rounded-t-sm px-0.5 py-3 shadow-soft transition-transform active:scale-95"
                     style={{
                       height,
                       width,
@@ -48,7 +48,7 @@ export function ShelfVisualization({ books }: { books: Book[] }) {
                     title={book.title}
                   >
                     <span
-                      className="max-h-full overflow-hidden text-[10px] font-medium leading-tight text-white/85"
+                      className="line-clamp-1 max-h-full text-[10px] font-medium leading-tight text-white/85"
                       style={{ writingMode: 'vertical-rl' }}
                     >
                       {book.title}

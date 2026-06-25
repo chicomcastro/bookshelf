@@ -45,6 +45,15 @@ async function fetchDocs(q: string, language: string | undefined, signal?: Abort
   return data.docs ?? [];
 }
 
+const toResult = (d: OLDoc): OLResult => ({
+  olWorkId: d.key.replace('/works/', ''),
+  title: d.title,
+  authors: d.author_name ?? [],
+  coverUrl: d.cover_i ? coverUrl(d.cover_i, 'M') : undefined,
+  publishedYear: d.first_publish_year,
+  categories: (d.subject ?? []).slice(0, 6),
+});
+
 export async function searchBooks(
   query: string,
   locale = 'pt-BR',
@@ -54,17 +63,22 @@ export async function searchBooks(
   if (!q) return [];
 
   const lang = marcLang(locale);
-  let docs = await fetchDocs(q, lang, signal);
-  // Fallback: se o filtro de idioma não trouxe nada, busca global
-  // (cobre títulos catalogados só em inglês).
-  if (docs.length === 0 && lang) docs = await fetchDocs(q, undefined, signal);
 
-  return docs.map((d) => ({
-    olWorkId: d.key.replace('/works/', ''),
-    title: d.title,
-    authors: d.author_name ?? [],
-    coverUrl: d.cover_i ? coverUrl(d.cover_i, 'M') : undefined,
-    publishedYear: d.first_publish_year,
-    categories: (d.subject ?? []).slice(0, 6),
-  }));
+  // Mescla a busca global com a busca no idioma do locale: a global mantém os
+  // títulos só-em-inglês; a filtrada por idioma casa traduções (ex.: "trono de
+  // vidro" -> "Throne of Glass"). Resultados do idioma do locale vêm primeiro.
+  const [globalDocs, langDocs] = await Promise.all([
+    fetchDocs(q, undefined, signal),
+    lang ? fetchDocs(q, lang, signal).catch(() => []) : Promise.resolve<OLDoc[]>([]),
+  ]);
+
+  const seen = new Set<string>();
+  const merged: OLResult[] = [];
+  for (const d of [...langDocs, ...globalDocs]) {
+    const r = toResult(d);
+    if (seen.has(r.olWorkId)) continue;
+    seen.add(r.olWorkId);
+    merged.push(r);
+  }
+  return merged.slice(0, 24);
 }
