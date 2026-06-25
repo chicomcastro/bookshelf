@@ -2,6 +2,7 @@ import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { BarChart3, BookHeart, Search, Settings } from 'lucide-react';
 import { cx } from '../lib/utils';
+import { useInputFocused } from '../lib/useInputFocused';
 
 const items = [
   { to: '/', icon: BookHeart, key: 'shelf' as const, end: true },
@@ -12,10 +13,15 @@ const items = [
 
 export function BottomNav() {
   const { t } = useTranslation();
+  const inputFocused = useInputFocused();
   return (
     <nav
-      className="glass fixed inset-x-0 bottom-0 z-40 border-t border-white/5"
+      className={cx(
+        'glass fixed inset-x-0 bottom-0 z-40 border-t border-white/5 transition-transform duration-200',
+        inputFocused && 'translate-y-full'
+      )}
       style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}
+      aria-hidden={inputFocused}
     >
       <div className="mx-auto flex max-w-md items-stretch justify-around px-4 pt-1.5 pb-1">
         {items.map(({ to, icon: Icon, key, end }) => (

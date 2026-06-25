@@ -49,7 +49,15 @@
     "empty": "No results. Try another term.",
     "error": "We couldn't search right now. Are you offline?",
     "added": "Added to your shelf ✨",
-    "already": "This book is already on your shelf"
+    "already": "This book is already on your shelf",
+    "manualCta": "Can't find it? Add manually"
+  },
+  "manual": {
+    "title": "Add manually",
+    "titleField": "Title *",
+    "authorField": "Author (comma-separated)",
+    "yearField": "Year",
+    "coverField": "Cover URL (optional)"
   },
   "book": {
     "byline": "by {{authors}}",
