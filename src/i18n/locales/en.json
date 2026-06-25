@@ -1,6 +1,22 @@
 {
   "app": { "name": "Bookshelf", "tagline": "your reading diary" },
-  "nav": { "shelf": "Shelf", "search": "Search", "settings": "Settings" },
+  "nav": { "shelf": "Shelf", "dashboard": "Dashboard", "search": "Search", "settings": "Settings" },
+  "dashboard": {
+    "title": "Your journey",
+    "readThisYear": "Read this year",
+    "reading": "Reading now",
+    "total": "On your shelf",
+    "avgRating": "Avg rating",
+    "avgSpice": "Avg spice",
+    "myBookshelf": "My bookshelf",
+    "topTropes": "Favorite tropes",
+    "topMoods": "Recurring moods",
+    "goalTitle": "Yearly reading goal",
+    "goalDone": "Goal reached!",
+    "goalSubtitle_one": "{{count}} book to go",
+    "goalSubtitle_other": "{{count}} books to go",
+    "editGoal": "Edit goal"
+  },
   "greeting": {
     "morning": "Good morning, reader",
     "afternoon": "Good afternoon, reader",
