@@ -14,12 +14,12 @@
 | Release | Tema | Épicos |
 |---------|------|--------|
 | **v1.0 — MVP** ✅ | Diário + Estante + Nicho + Compartilhar | E1, E2, E3, E4, **E4N (nicho)**, **E11 (card)**, E7 (parcial), E8 (parcial) |
-| **v1.1** 🚧 | Progresso & beleza | E5 (dashboard) ✅, E6 (metas) ✅, estante visual ✅, colagem (pendente) |
+| **v1.1** ✅ | Progresso & beleza | E5 (dashboard) ✅, E6 (metas) ✅, estante visual ✅, colagem ✅ |
 | **v1.2+** | Expansão | E9 (budget), coleções/TBR, import Goodreads, tema claro, sync |
 
-> **Status:** v1.0 (MVP) entregue. v1.1 com dashboard de stats, meta de leitura e
-> estante visual com lombadas entregues (PR do Dashboard); falta a colagem de
-> estante compartilhável.
+> **Status:** v1.0 (MVP) e v1.1 entregues — dashboard de stats, meta de leitura,
+> estante visual com lombadas e colagem de estante compartilhável. Próximo foco:
+> v1.2 (budget, coleções/TBR, import Goodreads, tema claro).
 
 > **Nota de escopo:** com todas as features de nicho no MVP
 > ([ADR-0007](adr/0007-nicho-booktok.md)), o v1 cresceu — em especial "book
