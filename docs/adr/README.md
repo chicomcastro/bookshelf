@@ -23,6 +23,8 @@ Consequências. **Status:** `Proposto` · `Aceito` · `Substituído por ADR-XXXX
 | [0012](0012-bibliotecas-de-experiencia.md) | Bibliotecas de experiência (motion, ícones, fontes) | Aceito |
 | [0013](0013-card-via-html-to-image.md) | Geração do card de resenha via html-to-image | Aceito |
 | [0014](0014-dashboard-stats-e-meta.md) | Dashboard com stats derivadas e meta de leitura local | Aceito |
+| [0015](0015-tema-claro-e-token-on-accent.md) | Tema claro e token `on-accent` | Aceito |
+| [0016](0016-haptics.md) | Feedback tátil (haptics) nas ações-chave | Aceito |
 
 ## Como criar um novo ADR
 

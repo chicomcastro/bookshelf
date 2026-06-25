@@ -7,6 +7,7 @@
 
 :root,
 :root[data-theme='dark'] {
+  color-scheme: dark;
   /* Superfícies */
   --bg-base: 14 14 16;
   --bg-surface: 22 22 26;
@@ -23,6 +24,28 @@
   /* Semânticos */
   --success: 111 191 139;
   --danger: 217 112 106;
+  /* Texto sobre superfícies de acento (dourado) — fixo nos dois temas */
+  --ink-on-accent: 20 16 10;
+}
+
+:root[data-theme='light'] {
+  color-scheme: light;
+  /* Superfícies — pergaminho quente (dark academia à luz do dia) */
+  --bg-base: 245 241 233;
+  --bg-surface: 253 250 244;
+  --bg-elevated: 255 255 255;
+  /* Acentos — mais profundos para contraste sobre o claro */
+  --accent-gold: 150 116 38;
+  --accent-gold-hi: 122 94 26;
+  --accent-rose: 181 86 111;
+  --accent-lavender: 122 106 168;
+  /* Texto */
+  --text-primary: 28 24 18;
+  --text-secondary: 74 70 62;
+  --text-muted: 124 116 104;
+  /* Semânticos */
+  --success: 47 138 87;
+  --danger: 192 64 58;
 }
 
 @layer base {

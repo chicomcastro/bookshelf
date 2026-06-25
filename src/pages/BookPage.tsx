@@ -23,6 +23,7 @@ import { CharactersSection } from '../components/CharactersSection';
 import { ShareCard } from '../components/ShareCard';
 import { useToast } from '../store/toast';
 import { formatDate } from '../lib/utils';
+import { celebrate, tap } from '../lib/haptics';
 import type { Locale } from '../data/types';
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
@@ -68,7 +69,10 @@ export function BookPage() {
         </button>
         <div className="flex gap-1">
           <button
-            onClick={() => updateBook(book.id, { isFavorite: !book.isFavorite })}
+            onClick={() => {
+              tap();
+              void updateBook(book.id, { isFavorite: !book.isFavorite });
+            }}
             className="rounded-full p-2 active:scale-90"
             aria-label="favorite"
           >
@@ -89,7 +93,13 @@ export function BookPage() {
           </p>
           {book.publishedYear && <p className="mt-0.5 text-xs text-ink-muted">{book.publishedYear}</p>}
           <div className="mt-3">
-            <StatusSelect value={book.status} onChange={(s: ReadingStatus) => setStatus(book.id, s)} />
+            <StatusSelect
+              value={book.status}
+              onChange={(s: ReadingStatus) => {
+                s === 'read' ? celebrate() : tap();
+                void setStatus(book.id, s);
+              }}
+            />
           </div>
         </div>
       </div>

@@ -42,7 +42,7 @@ export function NotesSection({ bookId }: { bookId: string }) {
               onClick={() => setType(tp)}
               className={cx(
                 'flex items-center gap-1 rounded-full px-3 py-1 text-xs',
-                type === tp ? 'bg-gold text-base' : 'bg-elevated text-ink-soft'
+                type === tp ? 'bg-gold text-onaccent' : 'bg-elevated text-ink-soft'
               )}
             >
               {tp === 'note' ? <StickyNote size={12} /> : <Quote size={12} />}
@@ -70,7 +70,7 @@ export function NotesSection({ bookId }: { bookId: string }) {
           <button
             onClick={handleAdd}
             disabled={!body.trim()}
-            className="rounded-full bg-gold px-4 py-1.5 text-xs font-medium text-base disabled:opacity-40"
+            className="rounded-full bg-gold px-4 py-1.5 text-xs font-medium text-onaccent disabled:opacity-40"
           >
             {t('common.add')}
           </button>

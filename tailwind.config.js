@@ -13,6 +13,7 @@ export default {
         'gold-hi': 'rgb(var(--accent-gold-hi) / <alpha-value>)',
         rose: 'rgb(var(--accent-rose) / <alpha-value>)',
         lavender: 'rgb(var(--accent-lavender) / <alpha-value>)',
+        onaccent: 'rgb(var(--ink-on-accent) / <alpha-value>)',
         ink: 'rgb(var(--text-primary) / <alpha-value>)',
         'ink-soft': 'rgb(var(--text-secondary) / <alpha-value>)',
         'ink-muted': 'rgb(var(--text-muted) / <alpha-value>)',

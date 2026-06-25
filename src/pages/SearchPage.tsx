@@ -7,6 +7,7 @@ import type { ReadingStatus } from '../data/types';
 import { Page } from '../components/Page';
 import { BookCover } from '../components/BookCover';
 import { useToast } from '../store/toast';
+import { tap } from '../lib/haptics';
 
 export function SearchPage() {
   const { t } = useTranslation();
@@ -58,6 +59,7 @@ export function SearchPage() {
       status,
     });
     setAdded((a) => ({ ...a, [r.olWorkId]: true }));
+    tap();
     show(t('search.added'));
   }
 
