@@ -22,6 +22,7 @@ Consequências. **Status:** `Proposto` · `Aceito` · `Substituído por ADR-XXXX
 | [0011](0011-ci-cd-github-actions.md) | CI por PR + CD para GitHub Pages via Actions | Aceito |
 | [0012](0012-bibliotecas-de-experiencia.md) | Bibliotecas de experiência (motion, ícones, fontes) | Aceito |
 | [0013](0013-card-via-html-to-image.md) | Geração do card de resenha via html-to-image | Aceito |
+| [0014](0014-dashboard-stats-e-meta.md) | Dashboard com stats derivadas e meta de leitura local | Aceito |
 
 ## Como criar um novo ADR
 

@@ -1,10 +1,11 @@
 import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { BookHeart, Search, Settings } from 'lucide-react';
+import { BarChart3, BookHeart, Search, Settings } from 'lucide-react';
 import { cx } from '../lib/utils';
 
 const items = [
   { to: '/', icon: BookHeart, key: 'shelf' as const, end: true },
+  { to: '/dashboard', icon: BarChart3, key: 'dashboard' as const, end: false },
   { to: '/search', icon: Search, key: 'search' as const, end: false },
   { to: '/settings', icon: Settings, key: 'settings' as const, end: false },
 ];

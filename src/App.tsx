@@ -5,6 +5,7 @@ import { Toast } from './components/Toast';
 import { ShelfPage } from './pages/ShelfPage';
 import { SearchPage } from './pages/SearchPage';
 import { BookPage } from './pages/BookPage';
+import { DashboardPage } from './pages/DashboardPage';
 import { SettingsPage } from './pages/SettingsPage';
 
 export function App() {
@@ -15,6 +16,7 @@ export function App() {
         <AnimatePresence mode="wait">
           <Routes location={location} key={location.pathname}>
             <Route path="/" element={<ShelfPage />} />
+            <Route path="/dashboard" element={<DashboardPage />} />
             <Route path="/search" element={<SearchPage />} />
             <Route path="/book/:id" element={<BookPage />} />
             <Route path="/settings" element={<SettingsPage />} />

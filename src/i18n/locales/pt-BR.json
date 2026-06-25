@@ -1,6 +1,22 @@
 {
   "app": { "name": "Bookshelf", "tagline": "seu diário de leitura" },
-  "nav": { "shelf": "Estante", "search": "Buscar", "settings": "Ajustes" },
+  "nav": { "shelf": "Estante", "dashboard": "Painel", "search": "Buscar", "settings": "Ajustes" },
+  "dashboard": {
+    "title": "Sua jornada",
+    "readThisYear": "Lidos este ano",
+    "reading": "Lendo agora",
+    "total": "Total na estante",
+    "avgRating": "Nota média",
+    "avgSpice": "Picância média",
+    "myBookshelf": "Minha estante",
+    "topTropes": "Tropes favoritos",
+    "topMoods": "Sentimentos recorrentes",
+    "goalTitle": "Meta de leitura do ano",
+    "goalDone": "Meta batida!",
+    "goalSubtitle_one": "Falta {{count}} livro para a meta",
+    "goalSubtitle_other": "Faltam {{count}} livros para a meta",
+    "editGoal": "Editar meta"
+  },
   "greeting": {
     "morning": "Bom dia, leitora",
     "afternoon": "Boa tarde, leitora",
