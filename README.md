@@ -16,16 +16,26 @@ jornada de leitura — tudo offline-first, sem login, hospedado no GitHub Pages.
 | [`docs/02-design-system.md`](docs/02-design-system.md) | Identidade visual, cores, tipografia, componentes, telas |
 | [`docs/03-arquitetura.md`](docs/03-arquitetura.md) | Stack técnica, decisões (ADRs), modelo de dados, deploy |
 | [`docs/04-backlog.md`](docs/04-backlog.md) | Épicos, histórias de usuário, priorização MoSCoW, roadmap |
+| [`docs/adr/`](docs/adr/) | Decision Records — decisões de arquitetura e produto |
 
-## Decisões fundadoras
+## Pitch
 
-- **Local-first** — dados no dispositivo (IndexedDB), backup por export/import JSON. Sync na nuvem fica no roadmap.
-- **Open Library API** — metadados e capas de livros, gratuita e sem chave.
-- **MVP enxuto** — Estante + Anotações são o coração da v1.
-- **Bilíngue** — i18n desde o início, começando por PT-BR.
-- **SPA + PWA** — instalável, near-native, hospedável estaticamente no GitHub Pages.
+> Um **diário de leitura íntimo** para a cultura BookTok, onde cada livro vira uma
+> página linda o suficiente pra postar.
+
+## Decisões fundadoras (ver [ADRs](docs/adr/))
+
+- **Diário-first** — a entrada de diário é o coração; a estante é a vitrine.
+- **Nicho BookTok** — spice 🌶️, tropes, book boyfriends e mood já no MVP.
+- **Compartilhável** — cada resenha gera um card _story-ready_ (motor de crescimento).
+- **Viral por fora, privado por dentro** — sem rede social no app; a comunidade
+  cresce nas redes que a usuária já usa.
+- **Local-first** — dados no dispositivo (IndexedDB), backup por export/import JSON.
+- **Open Library API** — metadados e capas, gratuita e sem chave.
+- **Bilíngue** — i18n desde o início (PT-BR + EN).
+- **SPA + PWA** — instalável, near-native, hospedável no GitHub Pages.
 
 ## Público-alvo
 
 Leitoras jovens (20–35 anos), cultura BookTok/romantasy, que querem um espaço
-bonito e pessoal para curar sua biblioteca e suas impressões de leitura.
+bonito e pessoal para registrar o que sentiram e curar sua biblioteca.

@@ -13,9 +13,14 @@
 
 | Release | Tema | Épicos |
 |---------|------|--------|
-| **v1.0 — MVP** | Estante + Anotações | E1, E2, E3, E4, E7 (parcial), E8 (parcial) |
-| **v1.1** | Progresso & beleza | E5 (dashboard), E6 (metas), estante visual |
-| **v1.2+** | Expansão | E9 (budget), coleções, compartilhar, sync |
+| **v1.0 — MVP** | Diário + Estante + Nicho + Compartilhar | E1, E2, E3, E4, **E4N (nicho)**, **E11 (card)**, E7 (parcial), E8 (parcial) |
+| **v1.1** | Progresso & beleza | E5 (dashboard), E6 (metas), estante visual, colagem |
+| **v1.2+** | Expansão | E9 (budget), coleções/TBR, import Goodreads, sync |
+
+> **Nota de escopo:** com todas as features de nicho no MVP
+> ([ADR-0007](adr/0007-nicho-booktok.md)), o v1 cresceu — em especial "book
+> boyfriends/personagens" (E4N.3) introduz a entidade `Character`. Aceito
+> conscientemente; é o primeiro candidato a faseamento se o MVP ficar pesado.
 
 ---
 
@@ -61,6 +66,30 @@
 | 4.5 | Como usuária, quero salvar citações | S | S | tipo "citação"; exibição destacada |
 | 4.6 | Como usuária, quero avaliar de 0 a 5 estrelas | M | XS | `RatingStars` com meia-estrela; persiste |
 | 4.7 | Como usuária, quero registrar datas de início/fim | S | XS | date pickers; alimentam stats futuras |
+
+## E4N — Features de nicho (BookTok/romantasy)  _(Must — v1.0)_
+
+Ref.: [ADR-0007](adr/0007-nicho-booktok.md). Tudo bilíngue (PT/EN) e com conjuntos
+iniciais curados + customização.
+
+| # | História | Prio | Est. | Critérios de aceite |
+|---|----------|------|------|---------------------|
+| 4N.1 | Como usuária, quero dar um **spice rating** 🌶️ (0–5) | M | XS | escala visual de pimentas; persiste; aparece no card |
+| 4N.2 | Como usuária, quero marcar **tropes** | M | M | chips de um set curado + criar custom; viram filtro na estante |
+| 4N.3 | Como usuária, quero registrar **book boyfriends/personagens** | M | L | entidade `Character` por livro; nome, papel, nota; UI de lista |
+| 4N.4 | Como usuária, quero marcar o **mood** da leitura | M | S | tags emocionais ("me destruiu", "cozy", "book hangover"); set curado + custom |
+| 4N.5 | Como usuária, quero filtrar a estante por spice/trope/mood | S | S | filtros combináveis com estado e categoria |
+
+## E11 — Compartilhamento (card de resenha)  _(Must — v1.0)_
+
+Ref.: [ADR-0009](adr/0009-compartilhar-card-resenha.md). Geração 100% client-side.
+
+| # | História | Prio | Est. | Critérios de aceite |
+|---|----------|------|------|---------------------|
+| 11.1 | Como usuária, quero gerar um **card de resenha** de um livro | M | L | imagem story-ready: capa + rating + spice + trope + citação + marca discreta |
+| 11.2 | Como usuária, quero **baixar/compartilhar** o card | M | S | download PNG + Web Share API quando disponível; sem servidor |
+| 11.3 | Como usuária, quero **escolher um template/tema** do card | S | M | ≥2 templates coerentes com o design system |
+| 11.4 | Como usuária, quero o card legível com conteúdo variável | M | S | citação longa, sem capa, título grande → layout não quebra |
 
 ## E5 — Dashboard de leitura  _(Should — v1.1)_
 
@@ -108,7 +137,7 @@
 | # | História | Prio | Est. |
 |---|----------|------|------|
 | 10.1 | Coleções/tags personalizadas ("TBR de verão") | C | M |
-| 10.2 | Compartilhar estante como imagem (story-ready) | C | M |
+| 10.2 | Colagem da estante como imagem (story-ready) — _v1.1_ | S | M |
 | 10.3 | Sync na nuvem opcional (multi-dispositivo) | W | XL |
 | 10.4 | Recomendações por gênero/histórico | W | L |
 | 10.5 | Import de Goodreads/Skoob (CSV) | C | M |

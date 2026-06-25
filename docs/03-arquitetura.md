@@ -94,9 +94,23 @@ interface Book {
   categories: string[];       // gêneros/tags
   status: ReadingStatus;
   rating?: number;            // 0..5 (meias permitidas)
+  spice?: number;            // 0..5 — steam/spice rating (ADR-0007)
+  tropes: string[];          // ex.: ["enemies-to-lovers", "slow-burn"]
+  moods: string[];           // ex.: ["book-hangover", "cozy"]
   isFavorite: boolean;
   startedAt?: string;         // ISO
   finishedAt?: string;        // ISO
+  createdAt: string;
+  updatedAt: string;
+}
+
+interface Character {        // "book boyfriends" e personagens (ADR-0007)
+  id: string;
+  bookId: string;
+  name: string;
+  role?: string;             // ex.: "love interest", "vilã"
+  isBookBoyfriend: boolean;
+  note?: string;
   createdAt: string;
   updatedAt: string;
 }
@@ -119,7 +133,7 @@ interface AppSettings {
 }
 ```
 
-**Export/Import:** um JSON único `{ schemaVersion, exportedAt, books[], notes[], settings }`.
+**Export/Import:** um JSON único `{ schemaVersion, exportedAt, books[], notes[], characters[], settings }`.
 Botão de export gera download; import valida `schemaVersion` e faz merge/replace.
 
 ## 5. Integração Open Library

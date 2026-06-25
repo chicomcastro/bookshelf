@@ -25,13 +25,17 @@ curar o que leu, registrar o que sentiu e planejar o que vem.
 > **Um santuário digital para a vida de leitura — bonito o suficiente para
 > exibir, pessoal o suficiente para guardar segredos.**
 
-O Bookshelf é, ao mesmo tempo:
+O Bookshelf é um **diário de leitura** com uma **estante** como vitrine
+(decisão registrada em [ADR-0006](adr/0006-diario-first.md)):
 
-1. **Estante virtual** — uma biblioteca visual de livros lidos, lendo e desejados.
-2. **Livro de anotações** — resenhas, citações, sentimentos e _spoilers_ guardados
-   por livro.
+1. **Diário de leitura (o coração)** — resenhas, citações, sentimentos, avaliação,
+   spice 🌶️, tropes e personagens favoritos guardados por livro. É o que prende e
+   diferencia.
+2. **Estante virtual (a vitrine)** — biblioteca visual de livros lidos, lendo e
+   desejados, que organiza e exibe essas entradas de diário.
 
-Tudo com a estética _dark academia_ / BookTok que o público já ama, rodando como
+Tudo com a estética _dark academia_ / BookTok que o público já ama, mergulhando
+fundo no vocabulário do nicho ([ADR-0007](adr/0007-nicho-booktok.md)), rodando como
 um app instalável que funciona offline.
 
 ## 3. Público-alvo
@@ -65,6 +69,20 @@ um app instalável que funciona offline.
 | leitoras jovens | querem curar e relembrar suas leituras | é uma estante e diário de leitura lindos e offline | Goodreads (feio, social), planilhas (trabalhoso) |
 
 **Frase-síntese:** _"Sua estante, do seu jeito — bonita, privada e sempre com você."_
+
+## 4.1 Modelo de crescimento — "viral por fora, privado por dentro"
+
+O objetivo é **crescer comunidade**, mas o app é local-first, sem rede social
+interna ([ADR-0008](adr/0008-crescimento-viral-externo.md)). O crescimento vem de um
+loop viral externo:
+
+> Usuária registra uma leitura → gera um **card de resenha** lindo
+> ([ADR-0009](adr/0009-compartilhar-card-resenha.md)) → posta no Instagram/TikTok →
+> atrai novas leitoras → que instalam o app.
+
+O app é a **fábrica de conteúdo**; a comunidade vive nas redes que a usuária já usa.
+Perfis/feed/seguir dentro do app só seriam reconsiderados se surgir um backend
+opcional no futuro.
 
 ## 5. Princípios de produto
 
@@ -100,12 +118,13 @@ um app instalável que funciona offline.
 
 ## 7. Escopo por fase (resumo)
 
-- **MVP (v1.0):** Estante virtual (3 estados) + busca via Open Library + página de
-  livro com anotações/resenha/avaliação + export/import + PWA + i18n PT/EN.
+- **MVP (v1.0):** Estante virtual (3 estados) + busca via Open Library + diário
+  híbrido por livro (resenha + avaliação + **spice 🌶️ + tropes + personagens +
+  mood**) + **card de resenha compartilhável** + export/import + PWA + i18n PT/EN.
 - **v1.1:** Dashboard de estatísticas ("Good afternoon, Reader"), metas de leitura,
-  estante visual com lombadas.
-- **v1.2+:** Tracking de gastos (Budget), tags/coleções, citações destacadas,
-  compartilhar estante (imagem), sync na nuvem opcional.
+  estante visual com lombadas, colagem de estante compartilhável.
+- **v1.2+:** Tracking de gastos (Budget), coleções/TBR temáticos, import de
+  Goodreads/Skoob, sync na nuvem opcional.
 
 Detalhe completo em [`04-backlog.md`](04-backlog.md).
 
