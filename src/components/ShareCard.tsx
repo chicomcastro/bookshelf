@@ -195,7 +195,7 @@ export function ShareCard({ book, onClose }: { book: Book; onClose: () => void }
           <button
             onClick={handleShare}
             disabled={busy}
-            className="flex flex-1 items-center justify-center gap-2 rounded-full bg-gold py-3.5 font-medium text-base shadow-glow"
+            className="flex flex-1 items-center justify-center gap-2 rounded-full bg-gold py-3.5 font-medium text-onaccent shadow-glow"
           >
             <Share2 size={18} />
             {t('share.shareBtn')}

@@ -55,7 +55,7 @@ export function SettingsPage() {
                   onClick={() => i18n.changeLanguage(l)}
                   className={cx(
                     'flex-1 rounded-xl py-2 text-sm',
-                    locale === l ? 'bg-gold text-base' : 'bg-elevated text-ink-soft'
+                    locale === l ? 'bg-gold text-onaccent' : 'bg-elevated text-ink-soft'
                   )}
                 >
                   {l === 'pt-BR' ? '🇧🇷 Português' : '🇺🇸 English'}
@@ -77,7 +77,7 @@ export function SettingsPage() {
                   onClick={() => setTheme(tp)}
                   className={cx(
                     'flex-1 rounded-xl py-2 text-sm',
-                    theme === tp ? 'bg-gold text-base' : 'bg-elevated text-ink-soft'
+                    theme === tp ? 'bg-gold text-onaccent' : 'bg-elevated text-ink-soft'
                   )}
                 >
                   {t(`settings.theme${tp[0].toUpperCase()}${tp.slice(1)}`)}
@@ -103,7 +103,7 @@ export function SettingsPage() {
                   onClick={() => setImportMode(m)}
                   className={cx(
                     'rounded-full px-3 py-1',
-                    importMode === m ? 'bg-gold text-base' : 'bg-elevated text-ink-soft'
+                    importMode === m ? 'bg-gold text-onaccent' : 'bg-elevated text-ink-soft'
                   )}
                 >
                   {m === 'merge' ? t('settings.importMerge') : t('settings.importReplace')}

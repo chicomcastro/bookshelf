@@ -28,7 +28,7 @@ export function DashboardPage() {
         <div className="flex flex-col items-center px-8 pt-28 text-center">
           <Sparkles size={34} className="mb-4 text-gold" />
           <h1 className="text-xl font-semibold text-ink">{t('shelf.empty.title')}</h1>
-          <Link to="/search" className="mt-6 rounded-full bg-gold px-6 py-3 font-medium text-base shadow-glow">
+          <Link to="/search" className="mt-6 rounded-full bg-gold px-6 py-3 font-medium text-onaccent shadow-glow">
             {t('shelf.empty.cta')}
           </Link>
         </div>

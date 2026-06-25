@@ -72,7 +72,7 @@ export function CharactersSection({ bookId }: { bookId: string }) {
               <input type="checkbox" checked={bf} onChange={(e) => setBf(e.target.checked)} className="accent-rose" />
               {t('book.bookBoyfriend')}
             </label>
-            <button onClick={handleAdd} className="rounded-full bg-gold px-4 py-1.5 text-xs font-medium text-base">
+            <button onClick={handleAdd} className="rounded-full bg-gold px-4 py-1.5 text-xs font-medium text-onaccent">
               {t('common.add')}
             </button>
           </div>

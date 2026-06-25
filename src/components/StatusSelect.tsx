@@ -21,7 +21,7 @@ export function StatusSelect({
           onClick={() => onChange(s)}
           className={cx(
             'rounded-full px-3 py-1.5 text-xs font-medium transition-all',
-            value === s ? 'bg-gold text-base shadow-glow' : 'text-ink-soft'
+            value === s ? 'bg-gold text-onaccent shadow-glow' : 'text-ink-soft'
           )}
         >
           {t(`status.${s}`)}

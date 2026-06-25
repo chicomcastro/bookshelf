@@ -3,15 +3,25 @@ import type { ThemePref } from '../data/types';
 
 const THEME_KEY = 'bookshelf-theme';
 
+const THEME_COLOR: Record<'dark' | 'light', string> = {
+  dark: '#0E0E10',
+  light: '#F5F1E9',
+};
+
+function systemTheme(): 'dark' | 'light' {
+  return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+}
+
 function resolveTheme(pref: ThemePref): 'dark' | 'light' {
-  if (pref === 'system') {
-    return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
-  }
-  return pref;
+  return pref === 'system' ? systemTheme() : pref;
 }
 
 export function applyTheme(pref: ThemePref): void {
-  document.documentElement.dataset.theme = resolveTheme(pref);
+  const resolved = resolveTheme(pref);
+  document.documentElement.dataset.theme = resolved;
+  document
+    .querySelector('meta[name="theme-color"]')
+    ?.setAttribute('content', THEME_COLOR[resolved]);
 }
 
 interface SettingsState {
@@ -30,3 +40,8 @@ export const useSettings = create<SettingsState>((set) => ({
     set({ theme });
   },
 }));
+
+// Quando o modo é "system", acompanha a mudança do SO em tempo real.
+window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', () => {
+  if (useSettings.getState().theme === 'system') applyTheme('system');
+});

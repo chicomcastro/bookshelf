@@ -69,7 +69,7 @@ export function ShelfPage() {
                 onClick={() => setFilter(f)}
                 className={
                   'whitespace-nowrap rounded-full px-4 py-1.5 text-sm transition-all ' +
-                  (filter === f ? 'bg-gold text-base' : 'bg-surface text-ink-soft')
+                  (filter === f ? 'bg-gold text-onaccent' : 'bg-surface text-ink-soft')
                 }
               >
                 {f === 'all'
@@ -106,7 +106,7 @@ export function ShelfPage() {
 
       <Link
         to="/search"
-        className="fixed bottom-24 right-5 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-gold text-base shadow-glow transition-transform active:scale-90"
+        className="fixed bottom-24 right-5 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-gold text-onaccent shadow-glow transition-transform active:scale-90"
         aria-label={t('nav.search')}
       >
         <Plus size={26} />
@@ -128,7 +128,7 @@ function EmptyShelf({ onSample }: { onSample: () => void }) {
       <p className="mt-2 text-sm text-ink-muted">{t('shelf.empty.subtitle')}</p>
       <Link
         to="/search"
-        className="mt-7 rounded-full bg-gold px-6 py-3 font-medium text-base shadow-glow"
+        className="mt-7 rounded-full bg-gold px-6 py-3 font-medium text-onaccent shadow-glow"
       >
         {t('shelf.empty.cta')}
       </Link>
