@@ -5,7 +5,7 @@ import { useLiveQuery } from 'dexie-react-hooks';
 import { Plus, Share2, Sparkles } from 'lucide-react';
 import { db } from '../data/db';
 import { seedSampleShelf } from '../data/seed';
-import type { Book, ReadingStatus } from '../data/types';
+import type { Book, Collection, ReadingStatus } from '../data/types';
 import { Page } from '../components/Page';
 import { BookCard } from '../components/BookCard';
 import { ShelfCollage } from '../components/ShelfCollage';
@@ -22,21 +22,32 @@ export function ShelfPage() {
   const show = useToast((s) => s.show);
   const [filter, setFilter] = useState<Filter>('all');
   const [sort, setSort] = useState<Sort>('recent');
+  const [collectionId, setCollectionId] = useState<string | null>(null);
   const [collage, setCollage] = useState(false);
 
   const books = useLiveQuery(() => db.books.toArray(), [], undefined as Book[] | undefined);
+  const collections = useLiveQuery(
+    () => db.collections.orderBy('updatedAt').reverse().toArray(),
+    [],
+    [] as Collection[]
+  );
+
+  const activeCollection = collections.find((c) => c.id === collectionId) ?? null;
 
   const filtered = useMemo(() => {
     if (!books) return undefined;
     let list = books;
-    if (filter === 'favorites') list = list.filter((b) => b.isFavorite);
+    if (activeCollection) {
+      const ids = new Set(activeCollection.bookIds);
+      list = list.filter((b) => ids.has(b.id));
+    } else if (filter === 'favorites') list = list.filter((b) => b.isFavorite);
     else if (filter !== 'all') list = list.filter((b) => b.status === filter);
     const sorted = [...list];
     if (sort === 'recent') sorted.sort((a, b) => b.updatedAt.localeCompare(a.updatedAt));
     if (sort === 'title') sorted.sort((a, b) => a.title.localeCompare(b.title));
     if (sort === 'rating') sorted.sort((a, b) => (b.rating ?? 0) - (a.rating ?? 0));
     return sorted;
-  }, [books, filter, sort]);
+  }, [books, filter, sort, activeCollection]);
 
   const isEmpty = books?.length === 0;
 
@@ -66,10 +77,15 @@ export function ShelfPage() {
             {FILTERS.map((f) => (
               <button
                 key={f}
-                onClick={() => setFilter(f)}
+                onClick={() => {
+                  setFilter(f);
+                  setCollectionId(null);
+                }}
                 className={
                   'whitespace-nowrap rounded-full px-4 py-1.5 text-sm transition-all ' +
-                  (filter === f ? 'bg-gold text-onaccent' : 'bg-surface text-ink-soft')
+                  (filter === f && !activeCollection
+                    ? 'bg-gold text-onaccent'
+                    : 'bg-surface text-ink-soft')
                 }
               >
                 {f === 'all'
@@ -80,6 +96,26 @@ export function ShelfPage() {
               </button>
             ))}
           </div>
+
+          {collections.length > 0 && (
+            <div className="no-scrollbar mt-2 flex gap-2 overflow-x-auto px-5">
+              {collections.map((c) => (
+                <button
+                  key={c.id}
+                  onClick={() => setCollectionId(activeCollection?.id === c.id ? null : c.id)}
+                  className={
+                    'flex items-center gap-1 whitespace-nowrap rounded-full px-4 py-1.5 text-sm transition-all ' +
+                    (activeCollection?.id === c.id
+                      ? 'bg-lavender/20 text-lavender ring-1 ring-lavender/40'
+                      : 'bg-surface text-ink-soft')
+                  }
+                >
+                  {c.emoji ? `${c.emoji} ` : '📂 '}
+                  {c.name}
+                </button>
+              ))}
+            </div>
+          )}
 
           <div className="mt-4 flex items-center justify-between px-5">
             <span className="text-xs text-ink-muted">
@@ -104,13 +140,16 @@ export function ShelfPage() {
         </>
       )}
 
-      <Link
-        to="/search"
-        className="fixed bottom-24 right-5 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-gold text-onaccent shadow-glow transition-transform active:scale-90"
-        aria-label={t('nav.search')}
-      >
-        <Plus size={26} />
-      </Link>
+      {!isEmpty && (
+        <Link
+          to="/search"
+          className="fixed right-5 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-gold text-onaccent shadow-glow transition-transform active:scale-90"
+          style={{ bottom: 'calc(env(safe-area-inset-bottom) + 5rem)' }}
+          aria-label={t('nav.search')}
+        >
+          <Plus size={26} />
+        </Link>
+      )}
 
       {collage && books && <ShelfCollage books={books} onClose={() => setCollage(false)} />}
     </Page>

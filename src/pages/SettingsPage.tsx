@@ -6,6 +6,7 @@ import { seedSampleShelf } from '../data/seed';
 import { useSettings } from '../store/settings';
 import type { Locale, ThemePref } from '../data/types';
 import { Page } from '../components/Page';
+import { CollectionsManager } from '../components/CollectionsManager';
 import { useToast } from '../store/toast';
 import { cx } from '../lib/utils';
 
@@ -145,6 +146,15 @@ export function SettingsPage() {
             >
               <Trash2 size={16} /> {t('settings.wipe')}
             </button>
+          </Row>
+        </section>
+
+        <section className="space-y-2">
+          <h2 className="px-1 text-xs font-semibold uppercase tracking-wide text-ink-muted">
+            {t('collections.title')}
+          </h2>
+          <Row>
+            <CollectionsManager />
           </Row>
         </section>
 

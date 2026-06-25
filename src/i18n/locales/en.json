@@ -110,6 +110,13 @@
     "privacy": "100% private · works offline · no login",
     "loadSample": "Load a sample shelf"
   },
+  "collections": {
+    "title": "Collections",
+    "new": "New collection",
+    "namePlaceholder": "e.g. Summer TBR",
+    "empty": "No collections yet. Create one from a book's page.",
+    "deleteConfirm": "Delete the \"{{name}}\" collection? The books stay on your shelf."
+  },
   "common": {
     "cancel": "Cancel",
     "confirm": "Confirm",

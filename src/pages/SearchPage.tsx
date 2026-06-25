@@ -10,7 +10,7 @@ import { useToast } from '../store/toast';
 import { tap } from '../lib/haptics';
 
 export function SearchPage() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const show = useToast((s) => s.show);
   const [query, setQuery] = useState('');
   const [results, setResults] = useState<OLResult[]>([]);
@@ -29,10 +29,10 @@ export function SearchPage() {
     setLoading(true);
     const timer = setTimeout(async () => {
       try {
-        const res = await searchBooks(q, ctrl.signal);
+        const res = await searchBooks(q, i18n.language, ctrl.signal);
         setResults(res);
         setError(false);
-      } catch (e) {
+      } catch {
         if (!ctrl.signal.aborted) setError(true);
       } finally {
         if (!ctrl.signal.aborted) setLoading(false);
@@ -42,25 +42,29 @@ export function SearchPage() {
       ctrl.abort();
       clearTimeout(timer);
     };
-  }, [query]);
+  }, [query, i18n.language]);
 
   async function handleAdd(r: OLResult, status: ReadingStatus) {
-    if (await findByWorkId(r.olWorkId)) {
-      show(t('search.already'));
-      return;
+    try {
+      if (await findByWorkId(r.olWorkId)) {
+        show(t('search.already'));
+        return;
+      }
+      await addBook({
+        olWorkId: r.olWorkId,
+        title: r.title,
+        authors: r.authors,
+        coverUrl: r.coverUrl,
+        publishedYear: r.publishedYear,
+        categories: r.categories,
+        status,
+      });
+      setAdded((a) => ({ ...a, [r.olWorkId]: true }));
+      tap();
+      show(t('search.added'));
+    } catch {
+      show(t('search.error'));
     }
-    await addBook({
-      olWorkId: r.olWorkId,
-      title: r.title,
-      authors: r.authors,
-      coverUrl: r.coverUrl,
-      publishedYear: r.publishedYear,
-      categories: r.categories,
-      status,
-    });
-    setAdded((a) => ({ ...a, [r.olWorkId]: true }));
-    tap();
-    show(t('search.added'));
   }
 
   return (

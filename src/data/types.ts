@@ -55,11 +55,21 @@ export interface AppSettings {
   schemaVersion: number;
 }
 
+export interface Collection {
+  id: string;
+  name: string;
+  emoji?: string;
+  bookIds: string[];
+  createdAt: string;
+  updatedAt: string;
+}
+
 export interface BackupFile {
   schemaVersion: number;
   exportedAt: string;
   books: Book[];
   notes: Note[];
   characters: Character[];
+  collections?: Collection[];
   settings?: Partial<AppSettings>;
 }
