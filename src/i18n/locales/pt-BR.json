@@ -110,6 +110,13 @@
     "privacy": "100% privado · funciona offline · sem login",
     "loadSample": "Carregar estante de exemplo"
   },
+  "collections": {
+    "title": "Coleções",
+    "new": "Nova coleção",
+    "namePlaceholder": "Ex.: TBR de verão",
+    "empty": "Nenhuma coleção ainda. Crie uma na página de um livro.",
+    "deleteConfirm": "Excluir a coleção \"{{name}}\"? Os livros continuam na estante."
+  },
   "common": {
     "cancel": "Cancelar",
     "confirm": "Confirmar",

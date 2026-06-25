@@ -20,6 +20,7 @@ import { StatusSelect } from '../components/StatusSelect';
 import { ReviewEditor } from '../components/ReviewEditor';
 import { NotesSection } from '../components/NotesSection';
 import { CharactersSection } from '../components/CharactersSection';
+import { CollectionPicker } from '../components/CollectionPicker';
 import { ShareCard } from '../components/ShareCard';
 import { useToast } from '../store/toast';
 import { formatDate } from '../lib/utils';
@@ -126,6 +127,10 @@ export function BookPage() {
 
       <Section title={t('book.characters')}>
         <CharactersSection bookId={book.id} />
+      </Section>
+
+      <Section title={t('collections.title')}>
+        <CollectionPicker bookId={book.id} />
       </Section>
 
       <Section title={t('book.notes')}>

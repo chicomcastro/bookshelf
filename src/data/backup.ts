@@ -2,10 +2,11 @@ import { db, SCHEMA_VERSION } from './db';
 import type { BackupFile } from './types';
 
 export async function exportBackup(): Promise<BackupFile> {
-  const [books, notes, characters, settings] = await Promise.all([
+  const [books, notes, characters, collections, settings] = await Promise.all([
     db.books.toArray(),
     db.notes.toArray(),
     db.characters.toArray(),
+    db.collections.toArray(),
     db.settings.get('app'),
   ]);
   return {
@@ -14,6 +15,7 @@ export async function exportBackup(): Promise<BackupFile> {
     books,
     notes,
     characters,
+    collections,
     settings: settings ?? undefined,
   };
 }
@@ -35,18 +37,29 @@ export async function importBackup(file: File, mode: 'merge' | 'replace'): Promi
   if (typeof data.schemaVersion !== 'number' || !Array.isArray(data.books)) {
     throw new Error('Arquivo de backup inválido.');
   }
-  await db.transaction('rw', db.books, db.notes, db.characters, async () => {
+  await db.transaction('rw', db.books, db.notes, db.characters, db.collections, async () => {
     if (mode === 'replace') {
-      await Promise.all([db.books.clear(), db.notes.clear(), db.characters.clear()]);
+      await Promise.all([
+        db.books.clear(),
+        db.notes.clear(),
+        db.characters.clear(),
+        db.collections.clear(),
+      ]);
     }
     await db.books.bulkPut(data.books);
     if (Array.isArray(data.notes)) await db.notes.bulkPut(data.notes);
     if (Array.isArray(data.characters)) await db.characters.bulkPut(data.characters);
+    if (Array.isArray(data.collections)) await db.collections.bulkPut(data.collections);
   });
 }
 
 export async function wipeAll(): Promise<void> {
-  await db.transaction('rw', db.books, db.notes, db.characters, async () => {
-    await Promise.all([db.books.clear(), db.notes.clear(), db.characters.clear()]);
+  await db.transaction('rw', db.books, db.notes, db.characters, db.collections, async () => {
+    await Promise.all([
+      db.books.clear(),
+      db.notes.clear(),
+      db.characters.clear(),
+      db.collections.clear(),
+    ]);
   });
 }

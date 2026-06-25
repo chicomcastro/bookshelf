@@ -13,8 +13,11 @@ const items = [
 export function BottomNav() {
   const { t } = useTranslation();
   return (
-    <nav className="glass fixed inset-x-0 bottom-0 z-40 border-t border-white/5 pb-safe">
-      <div className="mx-auto flex max-w-md items-stretch justify-around px-4 pt-2">
+    <nav
+      className="glass fixed inset-x-0 bottom-0 z-40 border-t border-white/5"
+      style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}
+    >
+      <div className="mx-auto flex max-w-md items-stretch justify-around px-4 pt-1.5 pb-1">
         {items.map(({ to, icon: Icon, key, end }) => (
           <NavLink
             key={key}
@@ -22,14 +25,14 @@ export function BottomNav() {
             end={end}
             className={({ isActive }) =>
               cx(
-                'flex flex-1 flex-col items-center gap-1 rounded-xl py-1.5 text-[11px] transition-colors',
+                'flex flex-1 flex-col items-center gap-0.5 rounded-xl py-1 text-[10px] transition-colors active:scale-95',
                 isActive ? 'text-gold' : 'text-ink-muted'
               )
             }
           >
             {({ isActive }) => (
               <>
-                <Icon size={22} className={isActive ? 'fill-gold/10' : ''} />
+                <Icon size={20} className={isActive ? 'fill-gold/10' : ''} />
                 {t(`nav.${key}`)}
               </>
             )}
