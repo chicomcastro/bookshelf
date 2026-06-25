@@ -2,12 +2,13 @@ import { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useLiveQuery } from 'dexie-react-hooks';
-import { Plus, Sparkles } from 'lucide-react';
+import { Plus, Share2, Sparkles } from 'lucide-react';
 import { db } from '../data/db';
 import { seedSampleShelf } from '../data/seed';
 import type { Book, ReadingStatus } from '../data/types';
 import { Page } from '../components/Page';
 import { BookCard } from '../components/BookCard';
+import { ShelfCollage } from '../components/ShelfCollage';
 import { greetingKey } from '../lib/utils';
 import { useToast } from '../store/toast';
 
@@ -21,6 +22,7 @@ export function ShelfPage() {
   const show = useToast((s) => s.show);
   const [filter, setFilter] = useState<Filter>('all');
   const [sort, setSort] = useState<Sort>('recent');
+  const [collage, setCollage] = useState(false);
 
   const books = useLiveQuery(() => db.books.toArray(), [], undefined as Book[] | undefined);
 
@@ -40,9 +42,20 @@ export function ShelfPage() {
 
   return (
     <Page>
-      <header className="px-5 pt-6">
-        <p className="text-sm text-ink-muted">{t(`greeting.${greetingKey()}`)}</p>
-        <h1 className="mt-0.5 text-3xl font-semibold text-ink">{t('shelf.title')}</h1>
+      <header className="flex items-start justify-between px-5 pt-6">
+        <div>
+          <p className="text-sm text-ink-muted">{t(`greeting.${greetingKey()}`)}</p>
+          <h1 className="mt-0.5 text-3xl font-semibold text-ink">{t('shelf.title')}</h1>
+        </div>
+        {!isEmpty && (
+          <button
+            onClick={() => setCollage(true)}
+            className="mt-1 rounded-full bg-surface p-2.5 active:scale-90"
+            aria-label={t('share.collageTitle')}
+          >
+            <Share2 size={20} className="text-ink-soft" />
+          </button>
+        )}
       </header>
 
       {isEmpty ? (
@@ -98,6 +111,8 @@ export function ShelfPage() {
       >
         <Plus size={26} />
       </Link>
+
+      {collage && books && <ShelfCollage books={books} onClose={() => setCollage(false)} />}
     </Page>
   );
 }
