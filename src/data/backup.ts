@@ -54,12 +54,21 @@ export async function importBackup(file: File, mode: 'merge' | 'replace'): Promi
 }
 
 export async function wipeAll(): Promise<void> {
-  await db.transaction('rw', db.books, db.notes, db.characters, db.collections, async () => {
-    await Promise.all([
-      db.books.clear(),
-      db.notes.clear(),
-      db.characters.clear(),
-      db.collections.clear(),
-    ]);
-  });
+  await db.transaction(
+    'rw',
+    db.books,
+    db.notes,
+    db.characters,
+    db.collections,
+    db.covers,
+    async () => {
+      await Promise.all([
+        db.books.clear(),
+        db.notes.clear(),
+        db.characters.clear(),
+        db.collections.clear(),
+        db.covers.clear(),
+      ]);
+    }
+  );
 }

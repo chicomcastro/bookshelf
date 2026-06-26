@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { cx, coverGradient, initials } from '../lib/utils';
+import { useCachedCover } from '../lib/useCachedCover';
 
 interface Props {
   title: string;
@@ -10,15 +11,17 @@ interface Props {
 
 export function BookCover({ title, coverUrl, className, rounded = 'rounded-lg' }: Props) {
   const [failed, setFailed] = useState(false);
-  const showImage = coverUrl && !failed;
+  const src = useCachedCover(coverUrl);
+  const showImage = src && !failed;
 
   if (showImage) {
     return (
       <div className={cx('relative aspect-[2/3] overflow-hidden bg-elevated', rounded, className)}>
         <img
-          src={coverUrl}
+          src={src}
           alt={title}
           loading="lazy"
+          decoding="async"
           onError={() => setFailed(true)}
           className="h-full w-full object-cover"
         />
