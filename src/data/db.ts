@@ -3,12 +3,19 @@ import type { AppSettings, Book, Character, Collection, Note } from './types';
 
 export const SCHEMA_VERSION = 2;
 
+export interface CachedCover {
+  url: string;
+  blob: Blob;
+  savedAt: string;
+}
+
 class BookshelfDB extends Dexie {
   books!: Table<Book, string>;
   notes!: Table<Note, string>;
   characters!: Table<Character, string>;
   collections!: Table<Collection, string>;
   settings!: Table<AppSettings, string>;
+  covers!: Table<CachedCover, string>;
 
   constructor() {
     super('bookshelf');
@@ -23,6 +30,11 @@ class BookshelfDB extends Dexie {
     this.version(2).stores({
       books: 'id, status, isFavorite, updatedAt, title, olWorkId',
       collections: 'id, updatedAt',
+    });
+    // v3: cache local de capas como blob (ADR-0018) — Open Library responde 302
+    // sem max-age e via outro host, então o cache HTTP/SW não segura.
+    this.version(3).stores({
+      covers: 'url, savedAt',
     });
   }
 }
