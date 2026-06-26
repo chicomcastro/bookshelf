@@ -48,7 +48,7 @@ export function ShelfVisualization({ books }: { books: Book[] }) {
                     title={book.title}
                   >
                     <span
-                      className="line-clamp-1 max-h-full text-[10px] font-medium leading-tight text-white/85"
+                      className="max-h-full overflow-hidden whitespace-nowrap text-[10px] font-medium leading-tight text-white/85"
                       style={{ writingMode: 'vertical-rl' }}
                     >
                       {book.title}
