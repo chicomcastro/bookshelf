@@ -57,7 +57,9 @@
     "titleField": "Título *",
     "authorField": "Autora (separe por vírgula)",
     "yearField": "Ano",
-    "coverField": "URL da capa (opcional)"
+    "coverField": "URL da capa (opcional)",
+    "uploadCover": "Carregar capa",
+    "useUrl": "Usar URL"
   },
   "book": {
     "byline": "por {{authors}}",
@@ -82,6 +84,7 @@
     "started": "Começado",
     "finished": "Terminado",
     "share": "Compartilhar resenha",
+    "edit": "Editar livro",
     "remove": "Remover da estante",
     "removeConfirm": "Remover este livro e suas anotações?",
     "saved": "Salvo"

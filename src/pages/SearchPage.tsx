@@ -6,7 +6,7 @@ import { addBook, findByWorkId } from '../data/repositories';
 import type { ReadingStatus } from '../data/types';
 import { Page } from '../components/Page';
 import { BookCover } from '../components/BookCover';
-import { ManualAddSheet } from '../components/ManualAddSheet';
+import { BookFormSheet } from '../components/BookFormSheet';
 import { useToast } from '../store/toast';
 import { tap } from '../lib/haptics';
 
@@ -138,10 +138,11 @@ export function SearchPage() {
       </div>
 
       {manualOpen && (
-        <ManualAddSheet
+        <BookFormSheet
+          mode="create"
           prefillTitle={query.trim()}
           onClose={() => setManualOpen(false)}
-          onAdded={() => show(t('search.added'))}
+          onSaved={(msg) => show(msg ?? t('search.added'))}
         />
       )}
     </Page>

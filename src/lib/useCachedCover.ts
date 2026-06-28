@@ -15,6 +15,12 @@ export function useCachedCover(coverUrl?: string): string | undefined {
       return;
     }
 
+    // Capas locais (upload via data:, ou blob:) já são auto-contidas: usa direto.
+    if (coverUrl.startsWith('data:') || coverUrl.startsWith('blob:')) {
+      setSrc(coverUrl);
+      return;
+    }
+
     let active = true;
     let objectUrl: string | undefined;
 
