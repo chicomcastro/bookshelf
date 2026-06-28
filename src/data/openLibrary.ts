@@ -1,13 +1,5 @@
 // Client da Open Library (ADR-0003). Sem chave; debounce/cache na camada de UI.
-
-export interface OLResult {
-  olWorkId: string;
-  title: string;
-  authors: string[];
-  coverUrl?: string;
-  publishedYear?: number;
-  categories: string[];
-}
+import type { SearchResult } from './search';
 
 interface OLDoc {
   key: string; // "/works/OL12345W"
@@ -45,8 +37,8 @@ async function fetchDocs(q: string, language: string | undefined, signal?: Abort
   return data.docs ?? [];
 }
 
-const toResult = (d: OLDoc): OLResult => ({
-  olWorkId: d.key.replace('/works/', ''),
+const toResult = (d: OLDoc): SearchResult => ({
+  id: d.key.replace('/works/', ''),
   title: d.title,
   authors: d.author_name ?? [],
   coverUrl: d.cover_i ? coverUrl(d.cover_i, 'M') : undefined,
@@ -54,11 +46,11 @@ const toResult = (d: OLDoc): OLResult => ({
   categories: (d.subject ?? []).slice(0, 6),
 });
 
-export async function searchBooks(
+export async function searchOpenLibrary(
   query: string,
   locale = 'pt-BR',
   signal?: AbortSignal
-): Promise<OLResult[]> {
+): Promise<SearchResult[]> {
   const q = query.trim();
   if (!q) return [];
 
@@ -80,11 +72,11 @@ export async function searchBooks(
   ]);
 
   const seen = new Set<string>();
-  const merged: OLResult[] = [];
+  const merged: SearchResult[] = [];
   for (const d of [...langDocs, ...globalDocs]) {
     const r = toResult(d);
-    if (seen.has(r.olWorkId)) continue;
-    seen.add(r.olWorkId);
+    if (seen.has(r.id)) continue;
+    seen.add(r.id);
     merged.push(r);
   }
   return merged.slice(0, 24);

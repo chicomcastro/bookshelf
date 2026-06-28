@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Loader2, PencilLine, Plus, Search as SearchIcon } from 'lucide-react';
-import { searchBooks, type OLResult } from '../data/openLibrary';
+import { searchBooks, type SearchResult } from '../data/search';
 import { addBook, findByWorkId } from '../data/repositories';
 import type { ReadingStatus } from '../data/types';
 import { Page } from '../components/Page';
@@ -14,7 +14,7 @@ export function SearchPage() {
   const { t, i18n } = useTranslation();
   const show = useToast((s) => s.show);
   const [query, setQuery] = useState('');
-  const [results, setResults] = useState<OLResult[]>([]);
+  const [results, setResults] = useState<SearchResult[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [added, setAdded] = useState<Record<string, boolean>>({});
@@ -46,14 +46,14 @@ export function SearchPage() {
     };
   }, [query, i18n.language]);
 
-  async function handleAdd(r: OLResult, status: ReadingStatus) {
+  async function handleAdd(r: SearchResult, status: ReadingStatus) {
     try {
-      if (await findByWorkId(r.olWorkId)) {
+      if (await findByWorkId(r.id)) {
         show(t('search.already'));
         return;
       }
       await addBook({
-        olWorkId: r.olWorkId,
+        olWorkId: r.id,
         title: r.title,
         authors: r.authors,
         coverUrl: r.coverUrl,
@@ -61,7 +61,7 @@ export function SearchPage() {
         categories: r.categories,
         status,
       });
-      setAdded((a) => ({ ...a, [r.olWorkId]: true }));
+      setAdded((a) => ({ ...a, [r.id]: true }));
       tap();
       show(t('search.added'));
     } catch {
@@ -97,7 +97,7 @@ export function SearchPage() {
 
         <ul className="space-y-3">
           {results.map((r) => (
-            <li key={r.olWorkId} className="flex gap-3 rounded-2xl bg-surface p-3">
+            <li key={r.id} className="flex gap-3 rounded-2xl bg-surface p-3">
               <BookCover title={r.title} coverUrl={r.coverUrl} className="w-16 shrink-0" />
               <div className="flex min-w-0 flex-1 flex-col">
                 <p className="line-clamp-2 font-medium text-ink">{r.title}</p>
@@ -106,7 +106,7 @@ export function SearchPage() {
                   {r.publishedYear ? ` · ${r.publishedYear}` : ''}
                 </p>
                 <div className="mt-auto flex flex-wrap gap-1.5 pt-2">
-                  {added[r.olWorkId] ? (
+                  {added[r.id] ? (
                     <span className="text-xs text-success">{t('search.added')}</span>
                   ) : (
                     (['want_to_read', 'reading', 'read'] as ReadingStatus[]).map((s) => (
