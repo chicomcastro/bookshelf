@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useLiveQuery } from 'dexie-react-hooks';
-import { ChevronLeft, Heart, Share2, Trash2 } from 'lucide-react';
+import { ChevronLeft, Heart, Pencil, Share2, Trash2 } from 'lucide-react';
 import { db } from '../data/db';
 import { MOODS, TROPES } from '../data/domain';
 import {
@@ -22,6 +22,7 @@ import { NotesSection } from '../components/NotesSection';
 import { CharactersSection } from '../components/CharactersSection';
 import { CollectionPicker } from '../components/CollectionPicker';
 import { ShareCard } from '../components/ShareCard';
+import { BookFormSheet } from '../components/BookFormSheet';
 import { useToast } from '../store/toast';
 import { formatDate } from '../lib/utils';
 import { celebrate, tap } from '../lib/haptics';
@@ -42,6 +43,7 @@ export function BookPage() {
   const navigate = useNavigate();
   const show = useToast((s) => s.show);
   const [sharing, setSharing] = useState(false);
+  const [editing, setEditing] = useState(false);
 
   const book = useLiveQuery(() => db.books.get(id), [id], undefined as Book | undefined | null);
 
@@ -78,6 +80,9 @@ export function BookPage() {
             aria-label="favorite"
           >
             <Heart size={22} className={book.isFavorite ? 'fill-rose text-rose' : 'text-ink-soft'} />
+          </button>
+          <button onClick={() => setEditing(true)} className="rounded-full p-2 active:scale-90" aria-label={t('book.edit')}>
+            <Pencil size={20} className="text-ink-soft" />
           </button>
           <button onClick={() => setSharing(true)} className="rounded-full p-2 active:scale-90" aria-label={t('book.share')}>
             <Share2 size={22} className="text-ink-soft" />
@@ -163,6 +168,14 @@ export function BookPage() {
       </div>
 
       {sharing && <ShareCard book={book} onClose={() => setSharing(false)} />}
+      {editing && (
+        <BookFormSheet
+          mode="edit"
+          book={book}
+          onClose={() => setEditing(false)}
+          onSaved={(msg) => show(msg ?? t('book.saved'))}
+        />
+      )}
     </Page>
   );
 }

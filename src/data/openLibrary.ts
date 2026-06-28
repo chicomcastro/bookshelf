@@ -62,6 +62,13 @@ export async function searchBooks(
   const q = query.trim();
   if (!q) return [];
 
+  // Atalho por ISBN: cola o ISBN (10/13 dígitos) e busca direto.
+  const digits = q.replace(/[\s-]/g, '');
+  if (/^\d{10}(\d{3})?$/.test(digits)) {
+    const isbnDocs = await fetchDocs(`isbn:${digits}`, undefined, signal).catch(() => []);
+    if (isbnDocs.length) return isbnDocs.map(toResult);
+  }
+
   const lang = marcLang(locale);
 
   // Mescla a busca global com a busca no idioma do locale: a global mantém os

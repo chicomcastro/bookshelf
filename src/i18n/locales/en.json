@@ -57,7 +57,9 @@
     "titleField": "Title *",
     "authorField": "Author (comma-separated)",
     "yearField": "Year",
-    "coverField": "Cover URL (optional)"
+    "coverField": "Cover URL (optional)",
+    "uploadCover": "Upload cover",
+    "useUrl": "Use URL"
   },
   "book": {
     "byline": "by {{authors}}",
@@ -82,6 +84,7 @@
     "started": "Started",
     "finished": "Finished",
     "share": "Share review",
+    "edit": "Edit book",
     "remove": "Remove from shelf",
     "removeConfirm": "Remove this book and its notes?",
     "saved": "Saved"
