@@ -28,6 +28,7 @@ Consequências. **Status:** `Proposto` · `Aceito` · `Substituído por ADR-XXXX
 | [0017](0017-colecoes-tbr.md) | Coleções / TBR temáticos (schema v2 + índice olWorkId) | Aceito |
 | [0018](0018-cache-de-capas-blob.md) | Cache de capas como blob no IndexedDB (schema v3) | Aceito |
 | [0019](0019-edicao-e-upload-de-capa.md) | Edição de livro e upload de capa (Google Books opcional) | Aceito |
+| [0020](0020-busca-google-books-opcional.md) | Busca via Google Books (opcional, key no build) | Aceito |
 
 ## Como criar um novo ADR
 
